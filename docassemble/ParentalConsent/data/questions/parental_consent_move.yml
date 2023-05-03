@@ -303,7 +303,7 @@ progress: 100
 # ALDocument objects specify the metadata for each template
 objects:
   - einvernehmenserklaerungpdf3b_filena_Post_interview_instructions: ALDocument.using(title="Instructions", filename="einvernehmenserklaerungpdf3b_filena_next_steps.docx", enabled=True, has_addendum=False)
-  - einvernehmenserklaerungpdf3b_filena_attachment: ALDocument.using(title="Consenting to move of child", filename="einvernehmenserklaerungpdf3b_filena", enabled=True, has_addendum=False, )
+  - einvernehmenserklaerungpdf3b_filena_attachment: ALDocument.using(title="Consenting to move of child", filename="parental-consent-form", enabled=True, has_addendum=False, )
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
