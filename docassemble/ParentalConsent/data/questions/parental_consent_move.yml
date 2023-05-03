@@ -64,7 +64,6 @@ code: |
   nav.set_section("review_einvernehmenserklaerungpdf3b_filena")
   # Below sets the user_role and user_ask_role by asking a question.
   # You can set user_ask_role directly instead to either 'plaintiff' or 'defendant'
-  user_ask_role
   users.gather()
   set_parts(subtitle=str(users))
   Current_Residence_of_your_child
