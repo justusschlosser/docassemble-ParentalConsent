@@ -307,7 +307,7 @@ objects:
 ---
 # Bundles group the ALDocuments into separate downloads, such as for court and for the user
 objects:
-  - al_user_bundle: ALDocumentBundle.using(elements=[einvernehmenserklaerungpdf3b_filena_Post_interview_instructions, einvernehmenserklaerungpdf3b_filena_attachment], filename="einvernehmenserklaerungpdf3b_filena", title="All forms to download for your records", enabled=True)
+  - al_user_bundle: ALDocumentBundle.using(elements=[ einvernehmenserklaerungpdf3b_filena_attachment], filename="einvernehmenserklaerungpdf3b_filena", title="All forms to download for your records", enabled=True)
   - al_recipient_bundle: ALDocumentBundle.using(elements=[einvernehmenserklaerungpdf3b_filena_attachment],  filename="einvernehmenserklaerungpdf3b_filena", title="All forms to file", enabled=True)
 ---
 # Each attachment defines a key in an ALDocument. We use `i` as the placeholder here so the same template is 
