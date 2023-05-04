@@ -102,9 +102,9 @@ comment: |
 id: Consenting_to_move_of_child
 continue button field: einvernehmenserklaerungpdf3b_filena_intro
 question: |
- Please read the following instructions carefully:
+ Important Information:
 subquestion: |
-  This interview will help you give parental consent to the change of residence of your underage child.
+  This interview will help you to tell the city of Duesseldorf, that you consent to have your child moving. (parental consent)
   You can only give/deny your consent if you have (joint-) custody 
   
   Before you provide your consent, be aware, that you may deny your consent if...
@@ -114,47 +114,75 @@ subquestion: |
   
   These points might be particularly true if you move abroad. To be sure, that you can deny your approval, you should contact a lawyer in Germany. If you cannot afford one, the state will pay for it after you apply for it.
   
-  The information you give, must match the information on your governmental ID (Personalausweis, Aufenthaltserlaubnis etc.) If only one person appears at the adminestrative office ("Einwohnermeldeamt"), you need to bring a governmental ID. The ID is important to prove that the signature is accurate.
+  The information you give, must match the information on your governmental ID (Personalausweis, Aufenthaltserlaubnis etc.) If only one parent appears at the adminestrative office ("Einwohnermeldeamt"), you need to bring a governmental ID. The ID is important to prove that the signature is accurate.
   
   Most people take about 3 minutes to finish this interview.
 ---
 id: Current Residence of your child
 question: |
-  Please insert some information on the current residence of your child
+  Current residence of your child
 fields:
-  - "What is your child's full name?": minor_name
+  - "Your child's full name?": minor_name
     maxlength: 81
-  - "What is the street that your child lives at?": minor_address_address
+  - "Street": minor_address_address
     maxlength: 34
-  - "What is the house number that your child lives at?": minor_address_unit
+  - "House number": minor_address_unit
     maxlength: 10
-  - "What is the zip-code ('Postleitzahl') that your child lives at?": minor_address_zip
+  - "zip-code ('Postleitzahl')": minor_address_zip
     maxlength: 10
   - "What is the city that your child lives at?": minor_address_city
     maxlength: 16
 continue button field: Current_Residence_of_your_child
 ---
+sets:
+  - users[i].name.first
+  - users[i].name.last
+  - users[i].name.middle
+  - users[i].name.suffix    
+id: other users names
+question: |
+  % if al_form_type in ['starts_case','existing_case','appeal']:
+  Who is the ${ ordinal(i) } person on your side of the case?
+  % else:
+  What is the name of the other parent who is adding their name to
+  this form with you?
+  % endif
+fields:
+  - code: |
+      users[i].name_fields()
+---
+id: Rest
+question: |
+  Provide some additional Information
+fields:
+  - "House number of your home?": address1_address_unit
+    maxlength: 11
+  - "What city are you in, when you finish this interview?": signature_place
+    maxlength: 15
+continue button field: Rest
+---
 id: Where is your child going to move
 question: |
-  Where is your child going to move?
+  New Residence of your child
 fields:
-  - "What is the new/ proposed house number that your child lives at?": minor_address_uni_newt
+  - "New house number": minor_address_uni_newt
     
-  - "What is the new/ proposed city that your child lives at?": minor_address_city_new
+  - "new city": minor_address_city_new
     maxlength: 16
-  - "What is the new/ proposed street that your child lives at?": minor_address_address_new
+    
+  - "new street": minor_address_address_new
     maxlength: 34
-  - "What is the new/ proposed zip code (PLZ) that your child lives at?": minor_address_zip_new
+  - "new/ proposed zip code (PLZ/Postleitzahl)": minor_address_zip_new
  
 continue button field: Where_is_your_child_going_to_move
 ---
-id: Housing agreement on your child
+id: What is the Housing agreement on your child
 question: |
   Housing agreement on your child
 fields:
-  - "Is the child's new home going to be their primary residency?": apartment_primary
+  - "Is the child's new home going to be their primary home?": apartment_primary
     datatype: yesno
-  - "Is the child's new home going to be their only residence?": apartment_singular
+  - "Is the child's new home going to be their only home?": apartment_singular
     datatype: yesno
 continue button field: Housing_agreement_on_your_child
 ---
